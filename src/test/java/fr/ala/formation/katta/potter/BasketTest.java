@@ -11,7 +11,7 @@ public class BasketTest {
 
         int sizeOfBasket = emptyBasket.getSize();
 
-        assertEquals(sizeOfBasket, 0);
+        assertEquals(0, sizeOfBasket);
     }
 
     @Test
@@ -21,7 +21,7 @@ public class BasketTest {
 
         int sizeOfBasket = basket.getSize();
 
-        assertEquals(sizeOfBasket, 1);
+        assertEquals(1, sizeOfBasket);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class BasketTest {
 
         int sizeOfBasket = basket.getSize();
 
-        assertEquals(sizeOfBasket, 2);
+        assertEquals(2, sizeOfBasket);
     }
 
     @Test
@@ -43,6 +43,6 @@ public class BasketTest {
 
         int sizeOfBasket = basket.getSize();
 
-        assertEquals(sizeOfBasket, 2);
+        assertEquals(2, sizeOfBasket);
     }
 }

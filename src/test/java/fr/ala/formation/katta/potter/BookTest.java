@@ -10,6 +10,6 @@ public class BookTest {
 
         Title title = book.getTitle();
 
-        assertEquals(title, Title.TITLE1);
+        assertEquals(Title.TITLE1, title);
     }
 }

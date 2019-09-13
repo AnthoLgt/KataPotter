@@ -13,7 +13,7 @@ public class PriceModelTest {
 
         double costOfEmptyBasket = PriceModel.getCostOfABasket(emptyBasket);
 
-        assertEquals(costOfEmptyBasket, 0, MARGIN_PRECISION);
+        assertEquals(0, costOfEmptyBasket, MARGIN_PRECISION);
     }
 
     @Test
@@ -23,7 +23,7 @@ public class PriceModelTest {
 
         double costOfBasket = PriceModel.getCostOfABasket(basket);
 
-        assertEquals(costOfBasket, 8, MARGIN_PRECISION);
+        assertEquals(8, costOfBasket, MARGIN_PRECISION);
     }
 
     @Test
@@ -34,7 +34,22 @@ public class PriceModelTest {
 
         double costOfBasket = PriceModel.getCostOfABasket(basket);
 
-        assertEquals(costOfBasket, 16, MARGIN_PRECISION);
+        assertEquals(16, costOfBasket, MARGIN_PRECISION);
+
+    }
+
+    @Test
+    public void basketWithTwoDifferentBookShouldHaveFivePourcentDiscount(){
+        Basket basket = new Basket();
+        basket.addBook(new Book(Title.TITLE1));
+        basket.addBook(new Book(Title.TITLE2));
+        double normalCost = 8 * 2;
+        double discount = normalCost * 5 / 100;
+        double expectedCost = normalCost - discount;
+
+        double costOfBasket = PriceModel.getCostOfABasket(basket);
+
+        assertEquals(expectedCost, costOfBasket, MARGIN_PRECISION);
     }
 
 
