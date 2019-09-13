@@ -19,7 +19,7 @@ public class PriceModelTest {
     @Test
     public void basketWithOneBookShouldCostOne(){
         Basket basket = new Basket();
-        basket.addBook(new Book(Title.TITLE1));
+        basket.addBook(Book.BOOK1);
 
         double costOfBasket = PriceModel.getCostOfABasket(basket);
 
@@ -29,21 +29,21 @@ public class PriceModelTest {
     @Test
     public void basketWithTwoIdentiqBooksShouldCostTwo(){
         Basket basket = new Basket();
-        basket.addBook(new Book(Title.TITLE1));
-        basket.addBook(new Book(Title.TITLE1));
+        basket.addBook(Book.BOOK1);
+        basket.addBook(Book.BOOK1);
 
         double costOfBasket = PriceModel.getCostOfABasket(basket);
 
-        assertEquals(8 * basket.getSize(), costOfBasket, MARGIN_PRECISION);
+        assertEquals(8 * 2, costOfBasket, MARGIN_PRECISION);
     }
 
 
     @Test
     public void basketWithTwoDifferentBooksShouldHaveFivePercentDiscount(){
         Basket basket = new Basket();
-        basket.addBook(new Book(Title.TITLE1));
-        basket.addBook(new Book(Title.TITLE2));
-        double normalCost = 8 * basket.getSize();
+        basket.addBook(Book.BOOK1);
+        basket.addBook(Book.BOOK2);
+        double normalCost = 8 * basket.getNumberOfBooks();
         double discount = normalCost * 5 / 100;
         double expectedCost = normalCost - discount;
 
@@ -55,9 +55,9 @@ public class PriceModelTest {
     @Test
     public void basketWithTwoNotDifferentBooksShouldNotHaveFivePercentDiscount(){
         Basket basket = new Basket();
-        basket.addBook(new Book(Title.TITLE1));
-        basket.addBook(new Book(Title.TITLE1));
-        double normalCost = 8 * basket.getSize();
+        basket.addBook(Book.BOOK1);
+        basket.addBook(Book.BOOK1);
+        double normalCost = 8 * basket.getNumberOfBooks();
         double discount = normalCost * 5 / 100;
         double expectedCost = normalCost - discount;
 
@@ -69,10 +69,10 @@ public class PriceModelTest {
     @Test
     public void basketWithThreeDifferentBooksShouldHaveTenPercentDiscount(){
         Basket basket = new Basket();
-        basket.addBook(new Book(Title.TITLE1));
-        basket.addBook(new Book(Title.TITLE2));
-        basket.addBook(new Book(Title.TITLE3));
-        double normalCost = 8 * basket.getSize();
+        basket.addBook(Book.BOOK1);
+        basket.addBook(Book.BOOK2);
+        basket.addBook(Book.BOOK3);
+        double normalCost = 8 * basket.getNumberOfBooks();
         double discount = normalCost * 10 / 100;
         double expectedCost = normalCost - discount;
 
@@ -84,10 +84,10 @@ public class PriceModelTest {
     @Test
     public void basketWithThreeNotDifferentBooksShouldNotHaveTenPercentDiscount(){
         Basket basket = new Basket();
-        basket.addBook(new Book(Title.TITLE1));
-        basket.addBook(new Book(Title.TITLE2));
-        basket.addBook(new Book(Title.TITLE2));
-        double normalCost = 8 * basket.getSize();
+        basket.addBook(Book.BOOK1);
+        basket.addBook(Book.BOOK2);
+        basket.addBook(Book.BOOK2);
+        double normalCost = 8 * basket.getNumberOfBooks();
         double discount = normalCost * 10 / 100;
         double expectedCost = normalCost - discount;
 
@@ -99,11 +99,11 @@ public class PriceModelTest {
     @Test
     public void basketWithFourDifferentBooksShouldHaveTwentyPercentDiscount(){
         Basket basket = new Basket();
-        basket.addBook(new Book(Title.TITLE1));
-        basket.addBook(new Book(Title.TITLE2));
-        basket.addBook(new Book(Title.TITLE3));
-        basket.addBook(new Book(Title.TITLE4));
-        double normalCost = 8 * basket.getSize();
+        basket.addBook(Book.BOOK1);
+        basket.addBook(Book.BOOK2);
+        basket.addBook(Book.BOOK3);
+        basket.addBook(Book.BOOK4);
+        double normalCost = 8 * basket.getNumberOfBooks();
         double discount = normalCost * 20 / 100;
         double expectedCost = normalCost - discount;
 
@@ -115,11 +115,11 @@ public class PriceModelTest {
     @Test
     public void basketWithNotFourDifferentBooksShouldNotHaveTwentyPercentDiscount(){
         Basket basket = new Basket();
-        basket.addBook(new Book(Title.TITLE1));
-        basket.addBook(new Book(Title.TITLE2));
-        basket.addBook(new Book(Title.TITLE3));
-        basket.addBook(new Book(Title.TITLE3));
-        double normalCost = 8 * basket.getSize();
+        basket.addBook(Book.BOOK1);
+        basket.addBook(Book.BOOK2);
+        basket.addBook(Book.BOOK3);
+        basket.addBook(Book.BOOK3);
+        double normalCost = 8 * basket.getNumberOfBooks();
         double discount = normalCost * 20 / 100;
         double expectedCost = normalCost - discount;
 
@@ -131,12 +131,12 @@ public class PriceModelTest {
     @Test
     public void basketWithFiveDifferentBooksShouldHaveTwentyFivePercentDiscount(){
         Basket basket = new Basket();
-        basket.addBook(new Book(Title.TITLE1));
-        basket.addBook(new Book(Title.TITLE2));
-        basket.addBook(new Book(Title.TITLE3));
-        basket.addBook(new Book(Title.TITLE4));
-        basket.addBook(new Book(Title.TITLE5));
-        double normalCost = 8 * basket.getSize();
+        basket.addBook(Book.BOOK1);
+        basket.addBook(Book.BOOK2);
+        basket.addBook(Book.BOOK3);
+        basket.addBook(Book.BOOK4);
+        basket.addBook(Book.BOOK5);
+        double normalCost = 8 * basket.getNumberOfBooks();
         double discount = normalCost * 25 / 100;
         double expectedCost = normalCost - discount;
 
@@ -148,12 +148,12 @@ public class PriceModelTest {
     @Test
     public void basketWithFiveNotDifferentBooksShouldNotHaveTwentyFivePercentDiscount(){
         Basket basket = new Basket();
-        basket.addBook(new Book(Title.TITLE1));
-        basket.addBook(new Book(Title.TITLE2));
-        basket.addBook(new Book(Title.TITLE3));
-        basket.addBook(new Book(Title.TITLE5));
-        basket.addBook(new Book(Title.TITLE5));
-        double normalCost = 8 * basket.getSize();
+        basket.addBook(Book.BOOK1);
+        basket.addBook(Book.BOOK2);
+        basket.addBook(Book.BOOK3);
+        basket.addBook(Book.BOOK5);
+        basket.addBook(Book.BOOK5);
+        double normalCost = 8 * basket.getNumberOfBooks();
         double discount = normalCost * 25 / 100;
         double expectedCost = normalCost - discount;
 
@@ -162,6 +162,37 @@ public class PriceModelTest {
         assertNotEquals(expectedCost, costOfBasket, MARGIN_PRECISION);
     }
 
+    @Test
+    public void basketWithFourBooksThreeDifferentAndOneIdentiqShouldHaveTenPercentDiscountOnThreeIdentiqBooksAndNoDiscountForTheFive(){
+        Basket basket = new Basket();
+        basket.addBook(Book.BOOK1);
+        basket.addBook(Book.BOOK2);
+        basket.addBook(Book.BOOK3);
+        basket.addBook(Book.BOOK3);
+        double normalCost = 8.0 * 4.0;
+        double discount = 8.0 * 3.0 * 10.0 / 100.0;
+        double expectedCost = normalCost - discount;
 
+        double costOfBasket = PriceModel.getCostOfABasket(basket);
+
+        assertEquals(costOfBasket, costOfBasket, MARGIN_PRECISION);
+    }
+
+    @Test
+    public void potterExampleTest(){
+        Basket basket = new Basket();
+        basket.addBook(Book.BOOK1);
+        basket.addBook(Book.BOOK1);
+        basket.addBook(Book.BOOK2);
+        basket.addBook(Book.BOOK2);
+        basket.addBook(Book.BOOK3);
+        basket.addBook(Book.BOOK3);
+        basket.addBook(Book.BOOK4);
+        basket.addBook(Book.BOOK5);
+
+        double costOfBasket = PriceModel.getCostOfABasket(basket);
+
+        assertEquals(51.20, costOfBasket, MARGIN_PRECISION);
+    }
 
 }
