@@ -17,4 +17,8 @@ public class Basket {
     public void addBook(Book book) {
         this.listOfBooks.add(book);
     }
+
+    public Book getBookByAndIndex(int index){
+        return this.listOfBooks.get(index);
+    }
 }

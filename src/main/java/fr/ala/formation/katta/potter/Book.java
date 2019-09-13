@@ -2,7 +2,7 @@ package fr.ala.formation.katta.potter;
 
 public class Book {
 
-    private Title title;
+    private final Title title;
 
     public Book(Title title){
         this.title = title;
